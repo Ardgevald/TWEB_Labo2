@@ -1,0 +1,31 @@
+{
+  "name": "pokemon",
+  "version": "1.0.0",
+  "description": "Second laboratory exploring story telling",
+  "main": "src/pokemon.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "�"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ardgevald/TWEB_Labo2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ardgevald/TWEB_Labo2/issues"
+  },
+  "homepage": "https://github.com/Ardgevald/TWEB_Labo2#readme",
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "mocha": "^4.0.1"
+  },
+  "dependencies": {
+    "chai": "^4.1.2"
+  }
+}
