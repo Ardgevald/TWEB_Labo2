@@ -1,0 +1,72 @@
+Charizard uses flamethrower on Mega-Venusaur
+
+   Suppose Charizard base special attack is 100 (it's 107 in reality)
+      effective stat at level 100 -> 205
+
+   Suppose Mega-Venusaur base special defense is 120 (it really is)
+      effective stat at level 100 -> 205
+
+   FlameThrower
+      Power : 90
+   Modifiers
+      Super effective               : * 2
+      STAB (Same Type Attack Bonus) : * 1.5
+
+   Expected damage (using damage formula) (Mega-Venusaur at level 100 has roughly 300 Hp)
+      194
+   Maximum possible damage
+      2670
+      6
+
+How to get 2670 ???
+
+   Charizard special attack (with base 100 at level 100)
+      205 from base
+      +31 from IVs (maxed)
+      +63 from EVs (maxed)
+      *1.1 from Rash nature
+      *2 from stage 2 special attack
+
+      results in a 657.8 special attack
+
+   Additionnal modifiers
+      Super effective   -> * 2
+      STAB              -> * 1.5
+      Sun is harsh      -> * 1.5
+      Helping Hand      -> * 1.5
+      Blaze             -> * 1.5
+      Life Orb          -> * ~1.3 (5324/4096)
+
+   Damage delt in optimal offensive conditions : ~2670 
+   that's more than 8 times Mega-Venusaur's hp
+
+How to get 12 ???
+
+   Mega-Venusaur special defense stat
+      245 from base
+      +31 from IVs (maxed)
+      +63 from EVs (maxed)
+      *1.1 from Gentle
+      *2 from stage 2 special defense
+      *1.5 from Assault Vest
+
+      results in a 1118.7
+
+
+   Additionnal modifiers
+      Light Screen   -> * 0.5
+      Thick Fat      -> * 0.5
+      Rain           -> * 0.5
+
+      (those are still in effect)
+      Super effective   -> * 2
+      STAB              -> * 1.5
+
+   Damage delt in optimal deffensive conditions : ~6
+   That's ~2% of Mega-Venusaur's hp
+
+What if we combine the two ?
+   We keep all of the above (the weather is Sunny)
+   We arrive with a value of 148 damages, that just not enough to take it down in two attacks
+
+

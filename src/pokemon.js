@@ -1,21 +1,38 @@
-const request = require('request-promise');
+const PokedexPromise = require('pokedex-promise-v2');
+const fs = require('fs');
 
-const allPokemon = {
-  uri: 'http://pokeapi.co/api/v2/pokemon',
-  headers: {
-    'User-Agent': 'Request-Promise',
-  },
-  json: true, // Automatically parses the JSON string in the response
-};
+const Pokedex = new PokedexPromise();
 
-function getAllPokemons() {
-  request(allPokemon)
-    .then((pokemonList) => {
-      console.log(pokemonList);
+const pokemons = [];
+
+const first = 408;
+const last = 802;
+
+function getPokemon(id) {
+  Pokedex.getPokemonByName(id)
+    .then((result) => {
+      console.log(result.name);
+      pokemons.push(result);
+      if (id < last) {
+        setTimeout(() => {
+          getPokemon(id + 1);
+        }, 5000);
+      } else {
+        fs.writeFile('pokemons.json', JSON.stringify(pokemons, null, 2), (err) => {
+          if (err) throw err;
+          console.log('The file has been saved!');
+        });
+      }
     })
-    .catch((err) => {
-      console.log(`Could not retrieve data : ${err}`);
+    .catch((error) => {
+      fs.writeFile(`pokemonsTemp${Date.now()}.json`, JSON.stringify(pokemons, null, 2), (err) => {
+        if (err) throw err;
+        console.log('The file has been saved!');
+      });
+
+      console.log(error);
+      throw error;
     });
 }
 
-getAllPokemons();
+getPokemon(first);

@@ -1,5 +1,8 @@
 const should = require('chai').should();
 const request = require('request-promise');
+const PokedexPromise = require('pokedex-promise-v2');
+
+const Pokedex = new PokedexPromise();
 
 const languageFR = {
   uri: 'http://pokeapi.co/api/v2/language/fr',
@@ -21,6 +24,7 @@ describe('the pokemon api', () => {
   it('should allow me to get the french language', (done) => {
     request(languageFR)
       .then((language) => {
+        should.exist(language);
         done();
       })
       .catch((err) => {
@@ -36,6 +40,20 @@ describe('the pokemon api', () => {
       })
       .catch((err) => {
         should.not.exist(err);
+      });
+  });
+});
+
+describe('The pokemon-promise api', () => {
+  it('should allow me to get infos on evee', (done) => {
+    Pokedex.getPokemonByName('eevee') // with Promise
+      .then((response) => {
+        should.exist(response);
+        done();
+      })
+      .catch((error) => {
+        console.log(error);
+        should.not.exist(error);
       });
   });
 });

@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "chai": "^4.1.2",
+    "pokedex-promise-v2": "^3.0.3",
+    "promise-throttle": "^0.3.1",
     "request": "^2.83.0",
     "request-promise": "^4.2.2"
   }
