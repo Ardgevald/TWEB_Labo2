@@ -25,27 +25,45 @@ $.get('./csv/pokemon.csv', (data) => {
   pokedex = csvJSON(data);
 
   pokedex.forEach((pokemon) => {
-    // Affichage du tableau des users de la region
-    const tableBody = document.getElementById('pokedexData');
+    if (pokemon.id <= 802) {
+      // Affichage du tableau des users de la region
+      const tableBody = document.getElementById('pokedexData');
 
-    const line = document.createElement('tr');
+      const line = document.createElement('tr');
 
-    const colUpdate = document.createElement('td');
-    const nodeUpdate = document.createTextNode(pokemon.id);
-    colUpdate.appendChild(nodeUpdate);
-    line.appendChild(colUpdate);
+      const colUpdate = document.createElement('td');
+      const nodeUpdate = document.createTextNode(pokemon.id);
+      colUpdate.appendChild(nodeUpdate);
+      line.appendChild(colUpdate);
 
-    const colRepos = document.createElement('td');
-    const nodeRepos = document.createTextNode(pokemon.identifier);
-    colRepos.appendChild(nodeRepos);
-    line.appendChild(colRepos);
+      const colRepos = document.createElement('td');
+      const nodeRepos = document.createTextNode(pokemon.identifier);
+      colRepos.appendChild(nodeRepos);
+      line.appendChild(colRepos);
 
-    const colImg = document.createElement('td');
-    const img = document.createElement('img');
-    img.src = `http://pokeapi.co/media/sprites/pokemon/${pokemon.id}.png`;
-    colImg.appendChild(img);
-    line.appendChild(colImg);
+      const colImg = document.createElement('td');
+      const img = document.createElement('img');
+      img.src = `https://pokeapi.co/media/sprites/pokemon/${pokemon.id}.png`;
+      colImg.appendChild(img);
+      line.appendChild(colImg);
 
-    tableBody.appendChild(line);
+      const colAttack = document.createElement('td');
+      const radio = document.createElement('input');
+      radio.type = 'radio';
+      radio.name = 'radioAttack';
+      radio.value = pokemon.id;
+      colAttack.appendChild(radio);
+      line.appendChild(colAttack);
+
+      const colDefense = document.createElement('td');
+      const radio2 = document.createElement('input');
+      radio2.type = 'radio';
+      radio2.name = 'radioDefense';
+      radio2.value = pokemon.id;
+      colDefense.appendChild(radio);
+      line.appendChild(colDefense);
+
+      tableBody.appendChild(line);
+    }
   }, this);
 });
