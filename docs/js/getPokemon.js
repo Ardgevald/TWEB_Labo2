@@ -25,7 +25,7 @@ $.get('./csv/pokemonType.csv', (data) => {
   pokedex = csvJSON(data);
 
   pokedex.forEach((pokemon) => {
-    if (pokemon.id <= 802) {
+    if (pokemon.id && pokemon.id <= 802) {
       // Affichage du tableau des users de la region
       const tableBody = document.getElementById('pokedexData');
 
@@ -44,6 +44,8 @@ $.get('./csv/pokemonType.csv', (data) => {
       const colImg = document.createElement('td');
       const img = document.createElement('img');
       img.src = `https://pokeapi.co/media/sprites/pokemon/${pokemon.id}.png`;
+      img.height = 50;
+      img.width = 50;
       colImg.appendChild(img);
       line.appendChild(colImg);
 
