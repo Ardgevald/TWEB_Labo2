@@ -21,6 +21,6 @@ function csvJSON(csv) {
 
 let pokedex;
 
-$.get('../csv/pokemon.csv', (data) => {
+$.get('./csv/pokemon.csv', (data) => {
   pokedex = csvJSON(data);
 });
