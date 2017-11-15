@@ -60,7 +60,7 @@ $.get('./csv/pokemon.csv', (data) => {
       radio2.type = 'radio';
       radio2.name = 'radioDefense';
       radio2.value = pokemon.id;
-      colDefense.appendChild(radio);
+      colDefense.appendChild(radio2);
       line.appendChild(colDefense);
 
       tableBody.appendChild(line);
