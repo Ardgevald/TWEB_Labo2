@@ -24,3 +24,24 @@ let pokedex;
 $.get('./csv/pokemon.csv', (data) => {
   pokedex = csvJSON(data);
 });
+
+// const pokedexTable = document.getElementById('pokedexTable');
+
+pokedex.forEach((pokemon) => {
+  // Affichage du tableau des users de la region
+  const tableBody = document.getElementById('pokedexData');
+
+  const line = document.createElement('tr');
+
+  const colUpdate = document.createElement('td');
+  const nodeUpdate = document.createTextNode(pokemon.id);
+  colUpdate.appendChild(nodeUpdate);
+  line.appendChild(colUpdate);
+
+  const colRepos = document.createElement('td');
+  const nodeRepos = document.createTextNode(pokemon.identifier);
+  colRepos.appendChild(nodeRepos);
+  line.appendChild(colRepos);
+
+  tableBody.appendChild(line);
+}, this);
