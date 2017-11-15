@@ -44,8 +44,8 @@ $.get('./csv/pokemonType.csv', (data) => {
       const colImg = document.createElement('td');
       const img = document.createElement('img');
       img.src = `https://pokeapi.co/media/sprites/pokemon/${pokemon.id}.png`;
-      img.height = 50;
-      img.width = 50;
+      img.height = 75;
+      img.width = 75;
       colImg.appendChild(img);
       line.appendChild(colImg);
 
