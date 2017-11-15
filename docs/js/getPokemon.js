@@ -40,6 +40,12 @@ $.get('./csv/pokemon.csv', (data) => {
     colRepos.appendChild(nodeRepos);
     line.appendChild(colRepos);
 
+    const colImg = document.createElement('td');
+    const img = document.createElement('img');
+    img.src = `http://pokeapi.co/media/sprites/pokemon/${pokemon.id}.png`;
+    colImg.appendChild(img);
+    line.appendChild(colImg);
+
     tableBody.appendChild(line);
   }, this);
 });
