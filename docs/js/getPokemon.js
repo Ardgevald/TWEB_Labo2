@@ -21,7 +21,7 @@ function csvJSON(csv) {
 
 let pokedex;
 
-$.get('./csv/pokemon.csv', (data) => {
+$.get('./csv/pokemonTypes.csv', (data) => {
   pokedex = csvJSON(data);
 
   pokedex.forEach((pokemon) => {
@@ -46,6 +46,16 @@ $.get('./csv/pokemon.csv', (data) => {
       img.src = `https://pokeapi.co/media/sprites/pokemon/${pokemon.id}.png`;
       colImg.appendChild(img);
       line.appendChild(colImg);
+
+      const colType1 = document.createElement('td');
+      const nodeType1 = document.createTextNode(pokemon.type1);
+      colType1.appendChild(nodeType1);
+      line.appendChild(colType1);
+
+      const colType2 = document.createElement('td');
+      const nodeType2 = document.createTextNode(pokemon.type2);
+      colType2.appendChild(nodeType2);
+      line.appendChild(colType2);
 
       const colAttack = document.createElement('td');
       const radio = document.createElement('input');
