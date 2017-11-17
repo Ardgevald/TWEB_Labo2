@@ -73,7 +73,8 @@ $.get('./csv/pokemonType.csv', (data) => {
 
       const colAttack = document.createElement('td');
       const pokemonSelect = document.createElement('button');
-      pokemonSelect.classList.add('btn btn-default');
+      pokemonSelect.classList.add('btn');
+      pokemonSelect.classList.add('btn-default');
       pokemonSelect.type = 'button';
       pokemonSelect.textContent = 'As attacker';
       pokemonSelect.onclick = () => {
@@ -90,7 +91,8 @@ $.get('./csv/pokemonType.csv', (data) => {
 
       const colDefense = document.createElement('td');
       const pokemonSelect2 = document.createElement('button');
-      pokemonSelect2.classList.add('btn btn-default');
+      pokemonSelect2.classList.add('btn');
+      pokemonSelect2.classList.add('btn-default');
       pokemonSelect2.type = 'button';
       pokemonSelect2.textContent = 'As Defenser';
       pokemonSelect2.onclick = () => {
