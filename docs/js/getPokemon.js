@@ -24,6 +24,11 @@ let pokedex;
 $.get('./csv/pokemonType.csv', (data) => {
   pokedex = csvJSON(data);
 
+  const attackerImg = document.getElementById('attackerImg');
+  const defenserImg = document.getElementById('defenserImg');
+  const attackerId = document.getElementById('attackerId');
+  const defenserId = document.getElementById('defenserId');
+
   pokedex.forEach((pokemon) => {
     if (pokemon.id && pokemon.id <= 802) {
       // Affichage du tableau des users de la region
@@ -63,19 +68,31 @@ $.get('./csv/pokemonType.csv', (data) => {
       line.appendChild(colType2);
 
       const colAttack = document.createElement('td');
-      const radio = document.createElement('input');
-      radio.type = 'radio';
-      radio.name = 'radioAttack';
-      radio.value = pokemon.id;
-      colAttack.appendChild(radio);
+      const pokemonSelect = document.createElement('input');
+      pokemonSelect.class = 'btn btn-default';
+      pokemonSelect.type = 'button';
+      pokemonSelect.onclick = () => {
+        attackerId.value = pokemon.id;
+        attackerImg.src = `./res/${pokemon.id}.png`;
+        attackerImg.onerror = () => {
+          this.src = `https://pokeapi.co/media/sprites/pokemon/${pokemon.id}.png`;
+        };
+      };
+      colAttack.appendChild(pokemonSelect);
       line.appendChild(colAttack);
 
       const colDefense = document.createElement('td');
-      const radio2 = document.createElement('input');
-      radio2.type = 'radio';
-      radio2.name = 'radioDefense';
-      radio2.value = pokemon.id;
-      colDefense.appendChild(radio2);
+      const pokemonSelect2 = document.createElement('input');
+      pokemonSelect2.class = 'btn btn-default';
+      pokemonSelect2.type = 'button';
+      pokemonSelect2.onclick = () => {
+        defenserId.value = pokemon.id;
+        defenserImg.src = `./res/${pokemon.id}.png`;
+        defenserImg.onerror = () => {
+          this.src = `https://pokeapi.co/media/sprites/pokemon/${pokemon.id}.png`;
+        };
+      };
+      colDefense.appendChild(pokemonSelect2);
       line.appendChild(colDefense);
 
       tableBody.appendChild(line);
