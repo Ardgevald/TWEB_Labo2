@@ -28,6 +28,8 @@ $.get('./csv/pokemonType.csv', (data) => {
   const defenserImg = document.getElementById('defenserImg');
   const attackerId = document.getElementById('attackerId');
   const defenserId = document.getElementById('defenserId');
+  const attackerCaption = document.getElementById('attackerCaption');
+  const defenserCaption = document.getElementById('defenserCaption');
 
   pokedex.forEach((pokemon) => {
     if (pokemon.id && pokemon.id <= 802) {
@@ -75,6 +77,8 @@ $.get('./csv/pokemonType.csv', (data) => {
       pokemonSelect.onclick = () => {
         attackerId.value = pokemon.id;
         attackerImg.src = `./res/${pokemon.id}.png`;
+        attackerImg.alt = pokemon.identifier;
+        attackerCaption.textContent = pokemon.identifier;
         attackerImg.onerror = () => {
           this.src = `https://pokeapi.co/media/sprites/pokemon/${pokemon.id}.png`;
         };
@@ -90,6 +94,8 @@ $.get('./csv/pokemonType.csv', (data) => {
       pokemonSelect2.onclick = () => {
         defenserId.value = pokemon.id;
         defenserImg.src = `./res/${pokemon.id}.png`;
+        defenserImg.alt = pokemon.identifier;
+        defenserCaption.textContent = pokemon.identifier;
         defenserImg.onerror = () => {
           this.src = `https://pokeapi.co/media/sprites/pokemon/${pokemon.id}.png`;
         };
