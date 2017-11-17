@@ -110,4 +110,8 @@ $.get('./csv/pokemonType.csv', (data) => {
       tableBody.appendChild(line);
     }
   }, this);
+
+  $(document).ready(() => {
+    $('#pokedexTable').dataTable();
+  });
 });
