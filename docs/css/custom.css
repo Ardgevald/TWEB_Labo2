@@ -1,3 +1,18 @@
 td{
   vertical-align: middle !important;
 }
+
+.affix {
+  top: 100px;
+  width: 100%;
+  position:fixed;
+}
+
+.affix-top {
+  width: 100%;
+}
+
+.affix-bottom {
+  position: absolute;
+  width: 100%;  
+}
