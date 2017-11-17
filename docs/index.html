@@ -78,6 +78,13 @@
         <div class="col-lg-3">
           <div class="well" data-spy="affix" data-offset-top="1000">
             <form>
+              <input class="search" placeholder="Search" />
+              <button class="btn sort" data-sort="name">
+                Sort by name
+              </button>
+              <button class="btn sort" data-sort="id">
+                Sort by id
+              </button>
               <p>Attacker</p>
               <img src="./res/1.png" id="attackerImg">
               <div class="caption">
@@ -87,8 +94,8 @@
               <p>Defenser</p>
               <img src="./res/1.png" id="defenserImg">
               <div class="caption">
-                  <p id="defenserCaption"></p>
-                </div>
+                <p id="defenserCaption"></p>
+              </div>
               <input type="hidden" id="defenserId" value="1">
             </form>
           </div>
@@ -106,7 +113,7 @@
                 <th scope="col">Defenser</th>
               </tr>
             </thead>
-            <tbody id="pokedexData">
+            <tbody class="list" id="pokedexData">
 
             </tbody>
           </table>
@@ -149,6 +156,9 @@
 
   <!-- Custom javascript for content usage -->
   <script src="js/getPokemon.js"></script>
+
+  <!-- CDN for table management -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 
 </body>
 
