@@ -68,9 +68,10 @@ $.get('./csv/pokemonType.csv', (data) => {
       line.appendChild(colType2);
 
       const colAttack = document.createElement('td');
-      const pokemonSelect = document.createElement('input');
+      const pokemonSelect = document.createElement('button');
       pokemonSelect.class = 'btn btn-default';
       pokemonSelect.type = 'button';
+      pokemonSelect.textContent = 'As attacker';
       pokemonSelect.onclick = () => {
         attackerId.value = pokemon.id;
         attackerImg.src = `./res/${pokemon.id}.png`;
@@ -82,9 +83,10 @@ $.get('./csv/pokemonType.csv', (data) => {
       line.appendChild(colAttack);
 
       const colDefense = document.createElement('td');
-      const pokemonSelect2 = document.createElement('input');
+      const pokemonSelect2 = document.createElement('button');
       pokemonSelect2.class = 'btn btn-default';
       pokemonSelect2.type = 'button';
+      pokemonSelect2.textContent = 'As Defenser';
       pokemonSelect2.onclick = () => {
         defenserId.value = pokemon.id;
         defenserImg.src = `./res/${pokemon.id}.png`;
