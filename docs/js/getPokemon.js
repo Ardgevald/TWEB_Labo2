@@ -25,9 +25,9 @@ function getEfficiency(offenserType, defenderType1, defenderType2) {
       }
 
       typeEfficiency = response;
-    });
 
-    return getEfficiency(offenserType, defenderType1, defenderType2);
+      return getEfficiency(offenserType, defenderType1, defenderType2);
+    });
   }
 
   let modifier = 1;
