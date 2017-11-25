@@ -28,19 +28,19 @@ function getEfficiency(offenserType, defenderType1, defenderType2) {
 
       return getEfficiency(offenserType, defenderType1, defenderType2);
     });
+  } else {
+    let modifier = 1;
+
+    typeEfficiency.forEach((efficiency) => {
+      if (efficiency.damage_type_id === offenserType && (
+        efficiency.target_type_id === defenderType1 || efficiency.target_type_id === defenderType2
+      )) {
+        modifier *= efficiency.damage_factor / 100;
+      }
+    });
+
+    return modifier;
   }
-
-  let modifier = 1;
-
-  typeEfficiency.forEach((efficiency) => {
-    if (efficiency.damage_type_id === offenserType && (
-      efficiency.target_type_id === defenderType1 || efficiency.target_type_id === defenderType2
-    )) {
-      modifier *= efficiency.damage_factor / 100;
-    }
-  });
-
-  return modifier;
 }
 
 loadCSVToJson('./csv/pokemonType.csv', (err, pokedex) => {
