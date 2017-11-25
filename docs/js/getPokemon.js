@@ -1,28 +1,52 @@
+const reader = new XMLHttpRequest();
+
 // let csv is the CSV file with headers
-function csvJSON(csv) {
-  const lines = csv.split('\n');
-  const result = [];
-
-  const headers = lines[0].split(';');
-
-  for (let i = 1; i < lines.length; i += 1) {
-    const obj = {};
-    const currentline = lines[i].split(';');
-
-    for (let j = 0; j < headers.length; j += 1) {
-      obj[headers[j]] = currentline[j];
+function loadCSVToJson(url, done) {
+  reader.open('get', url, true);
+  reader.onload = () => {
+    done(null, $.csv.toObjects(reader.response));
+  };
+  reader.onerror = () => {
+    if (reader.readyState === 4) {
+      done(reader.response);
     }
-
-    result.push(obj);
-  }
-
-  return result;
+  };
+  reader.send(null);
 }
 
-let pokedex;
+let typeEfficiency;
 
-$.get('./csv/pokemonType.csv', (data) => {
-  pokedex = csvJSON(data);
+/* exported getEfficiency */
+function getEfficiency(offenserType, defenderType1, defenderType2) {
+  if (!typeEfficiency) {
+    loadCSVToJson('./csv/type_efficacy.csv', (err, response) => {
+      if (err) {
+        throw err;
+      }
+
+      typeEfficiency = response;
+    });
+
+    return getEfficiency(offenserType, defenderType1, defenderType2);
+  }
+
+  let modifier = 1;
+
+  typeEfficiency.forEach((efficiency) => {
+    if (efficiency.damage_type_id === offenserType && (
+      efficiency.target_type_id === defenderType1 || efficiency.target_type_id === defenderType2
+    )) {
+      modifier *= efficiency.damage_factor / 100;
+    }
+  });
+
+  return modifier;
+}
+
+loadCSVToJson('./csv/pokemonType.csv', (err, pokedex) => {
+  if (err) {
+    throw err;
+  }
 
   const attackerImg = document.getElementById('attackerImg');
   const defenserImg = document.getElementById('defenserImg');
@@ -113,5 +137,6 @@ $.get('./csv/pokemonType.csv', (data) => {
 
   $(document).ready(() => {
     $('#pokedexTable').dataTable();
+    console.log(getEfficiency(3, 4, 2));
   });
 });
