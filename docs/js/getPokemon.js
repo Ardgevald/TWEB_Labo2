@@ -32,8 +32,9 @@ function getEfficiency(offenserType, defenderType1, defenderType2) {
     let modifier = 1;
 
     typeEfficiency.forEach((efficiency) => {
-      if (efficiency.damage_type_id === offenserType && (
-        efficiency.target_type_id === defenderType1 || efficiency.target_type_id === defenderType2
+      if (parseInt(efficiency.damage_type_id, 10) === offenserType && (
+        parseInt(efficiency.target_type_id, 10) === defenderType1 ||
+        parseInt(efficiency.target_type_id, 10) === defenderType2
       )) {
         modifier *= efficiency.damage_factor / 100;
       }
