@@ -17,7 +17,7 @@ function loadCSVToJson(url, done) {
 let typeEfficiency;
 
 /* exported getEfficiency */
-function getEfficiency(offenserType, defenderType1, defenderType2) {
+function getEfficiency(offenserType, defenderType1, defenderType2, callback) {
   if (!typeEfficiency) {
     loadCSVToJson('./csv/type_efficacy.csv', (err, response) => {
       if (err) {
@@ -25,8 +25,7 @@ function getEfficiency(offenserType, defenderType1, defenderType2) {
       }
 
       typeEfficiency = response;
-
-      return getEfficiency(offenserType, defenderType1, defenderType2);
+      getEfficiency(offenserType, defenderType1, defenderType2, callback);
     });
   } else {
     let modifier = 1;
@@ -40,7 +39,7 @@ function getEfficiency(offenserType, defenderType1, defenderType2) {
       }
     });
 
-    return modifier;
+    callback(modifier);
   }
 }
 
@@ -138,6 +137,8 @@ loadCSVToJson('./csv/pokemonType.csv', (err, pokedex) => {
 
   $(document).ready(() => {
     $('#pokedexTable').dataTable();
-    console.log(getEfficiency(3, 4, 2));
+    getEfficiency(3, 4, 2, (modifier) => {
+      console.log(modifier);
+    });
   });
 });
