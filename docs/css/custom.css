@@ -2,17 +2,46 @@ td{
   vertical-align: middle !important;
 }
 
+.axis .domain {
+  display: none;
+}
+
 .affix {
   top: 80px;
   width: 100%;
   position:fixed;
 }
 
-.affix-top {
-  width: 100%;
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 20px;
 }
 
-.affix-bottom {
+.value {
+  color: red;
+  font-size:1.1em;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
   position: absolute;
-  width: 100%;  
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
 }

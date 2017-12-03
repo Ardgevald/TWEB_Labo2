@@ -142,3 +142,22 @@ loadCSVToJson('./csv/pokemonType.csv', (err, pokedex) => {
     });
   });
 });
+
+$('#pokemonPicker').affix({
+  offset: {
+    /* affix after top masthead */
+    top: () => {
+      this.top = $('#mainNav').height()
+        + $('#intro').height()
+        + $('#about').height();
+      return this.bottom;
+    },
+    /* un-affix when footer is reached */
+    bottom: () => {
+      this.bottom = $('fight').height()
+        + $('footer').height();
+      return this.bottom;
+    },
+  },
+});
+
