@@ -12,6 +12,10 @@ td{
   position:fixed;
 }
 
+.affix-bottom {
+  position: absolute;
+}
+
 .d3-tip {
   line-height: 1;
   font-weight: bold;
