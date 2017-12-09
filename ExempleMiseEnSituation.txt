@@ -25,7 +25,7 @@ How to get 2670 ???
       +31 from IVs (maxed)
       +63 from EVs (maxed)
       *1.1 from Rash nature
-      *2 from stage 2 special attack
+      stage 2 sp.attack -> * 2
 
       results in a 657.8 special attack
 
@@ -67,6 +67,6 @@ How to get 12 ???
 
 What if we combine the two ?
    We keep all of the above (the weather is Sunny)
-   We arrive with a value of 148 damages, that just not enough to take it down in two attacks
+   We arrive with a value of 
 
 

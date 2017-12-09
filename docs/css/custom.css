@@ -6,6 +6,19 @@ td {
   display: none;
 }
 
+.container {
+  max-width: 1920px;
+  width: 70%;
+}
+
+.container.wider{
+  width: 90%;
+}
+
+.img-responsive {
+  margin: 0 auto;
+}
+
 .affix {
   top: 80px;
   width: 100%;
