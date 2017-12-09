@@ -34,23 +34,10 @@
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#pokedex">Pokédex</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-          </li>
-        </ul>
-      </div>
     </div>
   </nav>
 
-  <header class="bg-primary text-white">
+  <header id="intro" class="bg-primary text-white">
     <div class="container text-center">
       <h1>The Pokémon world</h1>
       <p class="lead">Not only for kids, I tell you!</p>
@@ -61,15 +48,9 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2>About this page</h2>
-          <p class="lead">This is a great place to talk about your webpage. This template is purposefully unstyled so you can use it as a
-            boilerplate or starting point for you own landing page designs! This template features:</p>
-          <ul>
-            <li>Clickable nav links that smooth scroll to page sections</li>
-            <li>Responsive behavior when clicking nav links perfect for a one page website</li>
-            <li>Bootstrap's scrollspy feature which highlights which section of the page you're on in the navbar</li>
-            <li>Minimal custom CSS so you are free to explore your own unique design options</li>
-          </ul>
+          <h2>Behind the scene of a Pokémon fight !</h2>
+          <p class="lead">Have you ever wondered what's going on behind a Pokémon fight ? Then this webpage is made for you ! 
+            Here you'll be able to find how the fight mechanics work and maybe even learn new aspects of the game !</p>
         </div>
       </div>
     </div>
@@ -77,6 +58,7 @@
 
   <section id="pokedex" class="bg-light">
     <div class="container">
+      <div class="row"><div class="col text-center"><h2>Choose the fighters</h2></div></div>
       <div class="row">
         <div class="col-lg-3">
           <div class="well" data-spy="affix" data-offset-top="1000" data-offset-bottom="600">
@@ -118,20 +100,46 @@
     </div>
   </section>
 
-  <section id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>Contact us</h2>
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero odio fugiat voluptatem dolor, provident officiis,
-            id iusto! Obcaecati incidunt, qui nihil beatae magnam et repudiandae ipsa exercitationem, in, quo totam.</p>
+  <section id="fight" >
+      <div class="container">
+        <div class="row">
+          <div class="col text-center"><h2>Let the fight begin !</h2></div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h3>Attacker</h3>
+            <progress id="healthAttacker" value="100" max="100"></progress>
+            <img src="./res/1.png" id="fighterAttack">
+          </div>
+          <div class="col">
+            <h3>Defenser</h3>
+            <progress id="healthDefenser" value="100" max="100"></progress>
+            <img src="./res/1.png" id="fighterDefense">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+              <label for="attackSelector">Select attack:</label>
+              <select class="form-control" id="attackSelector"></select>
+          </div>
+          <div class="col-lg-8 mx-auto">
+              <input type="button" value="ATTACK!" onclick="attack()">
+          </div>
+        </div>
+        <div class="row">
+          <div id="easyFlow" class="col">
+            <p id="choicesSummary"></p>
+            <p id="fightEfficiency"></p>
+            <p id="attackerAttackStat"></p>
+            <p id="defenserDefenseStat"></p>
+            <p id="damageDetail"></p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer id="footer" class="py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
     </div>
@@ -159,8 +167,14 @@
   <!-- Javascript to read csv -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.8.3/jquery.csv.min.js"></script>
 
+  <!-- Javascript for d3 library -->
+  <script src="https://d3js.org/d3.v4.js"></script>
+
   <!-- Custom javascript for content usage -->
   <script src="js/getPokemon.js"></script>
+
+  <!-- Custom javascript for fight section -->
+  <script src="js/fight.js"></script>
 </body>
 
 </html>
