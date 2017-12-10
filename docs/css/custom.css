@@ -29,6 +29,11 @@ td {
   position: absolute;
 }
 
+div.dataTables_wrapper div.dataTables_info {
+  padding-top: 8px;
+  white-space: pre-wrap;
+}
+
 table.stats tr td:nth-child(1) {
   width: 30%;
   font-weight: bold;
