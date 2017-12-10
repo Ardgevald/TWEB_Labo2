@@ -1,11 +1,13 @@
-const svg = d3.select('#d3TypeProportions');
-const margin = {
-  top: 20, right: 20, bottom: 30, left: 40,
-};
+var width = 960,
+height = 700,
+radius = Math.min(width, height) / 2,
+color = d3.scale.category20c();
 
-const width = +svg.attr('width') - margin.left - margin.right;
-const height = +svg.attr('height') - margin.top - margin.bottom;
-const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+var svg = d3.select("#d3TypeProportions").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height * .52 + ")");
 
 var partition = d3.layout.partition()
     .sort(null)
@@ -29,7 +31,7 @@ d3.csv('csv/pokemonType.csv', (d, j, columns) => {
         name: "PokemonTypes",
         children: [],
     };
-    data.array.forEach(element => {
+    data.forEach(element => {
         let type1 = root.children.find(child => child.name === element.type1);
         if (type1 === undefined) {
             type1 = {
@@ -37,6 +39,7 @@ d3.csv('csv/pokemonType.csv', (d, j, columns) => {
                 children: [],
             };
             root.children.push(type1);
+            root.children.sort((a, b) => a.children.size - b.children.size)
         }
 
         if (element.type2 === "") {
@@ -51,6 +54,7 @@ d3.csv('csv/pokemonType.csv', (d, j, columns) => {
                     children: [],
                 };
                 type1.children.push(type2);
+                //type1.children.sort((a, b) => a.children.size - b.children.size)
             }
 
             type2.children.push({
