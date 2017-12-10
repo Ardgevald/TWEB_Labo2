@@ -23,7 +23,7 @@ function changeAttacker(id) {
 
     moves.forEach((move) => {
         if (move.pokemonID == id) {
-            //création de l'option de selection d'attaque associée
+            // creation of the options for the move selector
             let optionText = move.identifier + " (type: " +
                 move.typeName + ", power: " + move.power + ")";
             $('#attackSelector').append(`<option value="${move.id}">${optionText}</option>`);
@@ -40,16 +40,16 @@ function changeDefenser(id) {
     });
 
     $('#fighterDefense').attr('src', `./res/${id}.png`);
-    $('#healthDefenser').html(defenser.hp);    
+    $('#healthDefenser').html(defenser.hp);
 }
 
-//Optention des stats des 2 Pokémons
+// Getting the stats of both pokemon (we load all the pokemons in a variable)
 d3.csv('./csv/pokemon_complete.csv', (d, j, columns) => {
     return {
         id: +d.id,
         identifier: d.identifier,
         hp: (d.id !== "292" ? +d.hp * 2 + 110 : 1),
-        attack: +d.attack * 2 + 5,  //effective stats
+        attack: +d.attack * 2 + 5,  // effective stats
         defense: +d.defense * 2 + 5,
         attackSpe: +d.special_attack * 2 + 5,
         defenseSpe: +d.special_defense * 2 + 5,
@@ -69,11 +69,11 @@ d3.csv('./csv/pokemon_complete.csv', (d, j, columns) => {
 
         if (pokemon.id === idDefenser) {
             defenser = pokemon;
-            $('#healthDefenser').html(defenser.hp);  
+            $('#healthDefenser').html(defenser.hp);
         }
     });
 
-    //Génération des attaques disponibles pour l'attaquand
+    // Generating the chosable moves of the pokemon (all are loaded)
     d3.csv('./csv/moves.csv', (d, j, columns) => {
         return {
             id: +d.move_id,
@@ -90,7 +90,7 @@ d3.csv('./csv/pokemon_complete.csv', (d, j, columns) => {
             if (move.pokemonID === attacker.id) {
                 attacker.moves.push(move);
 
-                //création de l'option de selection d'attaque associée
+                // creation of the options for the move selector
                 let optionText = move.identifier + " (type: " +
                     move.typeName + ", power: " + move.power + ")";
                 $('#attackSelector').append(`<option value="${move.id}">${optionText}</option>`);
@@ -100,19 +100,19 @@ d3.csv('./csv/pokemon_complete.csv', (d, j, columns) => {
     });
 });
 
-//Déroulement du combat
+// Fight flow
 function attack() {
-    //récupération de l'attaque sélectionnée
+    // We get the chosen attack
     let chosenAttackID = +$('#attackSelector :selected').val();
     let chosenAttack = moves.find(m => m.id === chosenAttackID);
 
-    //résumé des choix de l'utilisateur
+    // summary of the user's choices
     let summary = attacker.identifier + " chose " + chosenAttack.identifier +
         " of " + chosenAttack.typeName + " type and a power of " + chosenAttack.power +
         " against " + defenser.identifier + ".";
     $('#choicesSummary').html(summary);
 
-    //détermination de l'efficacité de l'attaque choisie
+    // calculating the efficiency of the chosen move
     let damageFactor;
     d3.csv('./csv/type_efficacy.csv', (d, j, columns) => {
         return {
@@ -146,7 +146,7 @@ function attack() {
                 $('#fightEfficiency').html("It's not very effective!");
                 break;
             case 100:
-                //nothing to show
+                // nothing to show
                 $('#fightEfficiency').html("");
                 break;
             case 200:
@@ -155,7 +155,7 @@ function attack() {
                 break;
         }
 
-        //détails des dégats causés
+        // details of the damages
         let attackStat;
         let defenseStat;
 
@@ -174,7 +174,7 @@ function attack() {
             defenseText = "a defense";
         }
 
-        //this calculation is for a level 100 pokémon
+        // this calculation is for a level 100 pokémon without stab
         let damageCaused = Math.ceil(chosenAttack.power === 0 ? 0 : damageFactor / 100 * (((42 * chosenAttack.power * (attackStat / defenseStat)) / 50) + 2));
 
         $('#attackerAttackStat').html(attacker.identifier +
