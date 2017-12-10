@@ -157,12 +157,12 @@ function attack() {
             " damages to " + defenser.identifier);
         
         let hpAfterAttack = Math.max(defenser.hp - damageCaused, 0);
-        $('#healthDefenser').attr('value', hpAfterAttack);
+        $('#healthDefenser').attr('style', `width:${hpAfterAttack/defenser.hp*100}%;`);
 
         if (hpAfterAttack < (defenser.hp * 0.33)) {
-            $('#healthDefenser').css("background-color", "red");
+            $('#healthDefenser').attr('class', 'progress-bar progress-bar-danger');
         } else if (hpAfterAttack < (defenser.hp * 0.5)) {
-            $('#healthDefenser').css("background-color", "yellow");            
+            $('#healthDefenser').attr('class', 'progress-bar progress-bar-warning');            
         }
     });
 }
