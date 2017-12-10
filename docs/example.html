@@ -13,6 +13,9 @@
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+
   <!-- CDN bootstrap for datatables -->
   <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet">
 
@@ -60,24 +63,438 @@
   <section id="pokemonExample" class="bg-light">
     <div class="container">
       <h1>Study case</h1>
+      <p>
+        <em class="text-muted">Let's get to serious business
+          <small> but not too much</small>
+        </em>
+      </p>
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col">
           Let's take an example of an attack of a Pokémon on another, to see the full extand of what is behind the scenes. Suppose
-          there is a Charizard that uses the move Flamethrower on a Mega-Venusaur.
-        </div>
-        <div class="col-lg-2">
-          <img src="./res/6.png" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png'">
-        </div>
-        <div class="col-lg-2">
-          <img src="./res/10133.png" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10033.png'">
+          there is a Charizard that wants to use the move Flamethrower on a Mega-Venusaur. Let's assume for simplicity that
+          both Pokémons are at level 100 (the maximum).
         </div>
       </div>
+      <br/>
+      <div class="row">
+        <div class="col-lg-6 text-center">
+          <img src="./res/6.png" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png'">
+          <strong>Charizard</strong>
+          <span class=""></span>
+          <table class="table table-condensed stats">
+            <tbody>
+              <tr>
+                <td>HP</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="255"
+                      style="width:43.33%">
+                      <span>78</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Attack</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="255"
+                      style="width:46.67%">
+                      <span>84</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Defense</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="255"
+                      style="width:43.33%">
+                      <span>78</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Special Attack</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="109" aria-valuemin="0" aria-valuemax="255"
+                      style="width:60.56%">
+                      <span>109</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Special Defense</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="255"
+                      style="width:47.22%">
+                      <span>85</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Speed</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="255"
+                      style="width:55.56%">
+                      <span>100</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-lg-6 text-center">
+          <img src="./res/10133.png" onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10033.png'">
+          <strong>Mega-venusaur stats</strong>
+          <table class="table table-condensed stats">
+            <tbody>
+              <tr>
+                <td>HP</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="255"
+                      style="width:44.44%">
+                      <span>80</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Attack</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="255"
+                      style="width:55.56%">
+                      <span>100</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Defense</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="123" aria-valuemin="0" aria-valuemax="255"
+                      style="width:68.33%">
+                      <span>123</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Special Attack</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="122" aria-valuemin="0" aria-valuemax="255"
+                      style="width:67.78%">
+                      <span>122</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Special Defense</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="120" aria-valuemin="0" aria-valuemax="255"
+                      style="width:66.67%">
+                      <span>120</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Speed</td>
+                <td>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="255"
+                      style="width:44.44%">
+                      <span>80</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Each pokémon has base stats defining how strong it is in different domains. HP (Hit Points) are the life a Pokémon has. Attack
+          and Special Attack defines the power of the physical or special moves the Pokémon uses. Defense and Special Defense
+          is for the resistance a Pokémon has against such attacks. And finally, Speed is how fast a Pokémon can attack.
+        </p>
+        <p>
+          Using thoses stats, we can now look at the power of
+          <strong>Flamethrower</strong>. Each move has a power defining the damages you can do with such an attack. Flamethrower
+          has a power of 90, which is a pretty strong. But the effective power of Charizard using Flamethrower on Mega-Venusaur
+          is
+          <strong>270</strong>! The cause of that is two things that you may or may not know.
+        </p>
+      </div>
+      <dl class="row">
+        <dt class="col-lg-2">Type advantage</dt>
+        <dd class="col-lg-10 text-justify">
+          This is one of the basis of Pokémon. Each one of them has one or two types and some types are stronger than others. Moves
+          also have a type. Flamethrower is obviously
+          <span class="type fire">fire</span> type. Mega-Venusaur has
+          <span class="type grass">grass</span> type and
+          <span class="type poison">poison</span> type. Since
+          <span class="type fire">fire</span> is super effective against
+          <span class="type grass">grass</span>, the power is doubled.
+        </dd>
+
+        <dt class="col-lg-2">STAB (Same Type Attack Bonus)</dt>
+        <dd class="col-lg-10 text-justify">
+          This one is a little less known. If a Pokémon uses a move that is the same type it has, it's more effective. Since both Charizard
+          and Flamethower have
+          <span class="type fire">fire</span> type, the power's move is 1.5 times more effective
+        </dd>
+      </dl>
+      <div class="row">
+        <p>
+          Now let's get to the real deal. A Mega-Venusaur at level 100 has around 300 hit points. The damages the attack deals simply
+          remove as much HP on the target. If we calculate the damages of this move using the stats that we have, we get
+          <strong>194</strong> damage. That is roughly two-thirds of Mega-Venusaur's hit points, which is great, considering that
+          it's special-defense is pretty high...
+        </p>
+        <p>
+          But what if I tell you that in the right conditions, we could go up to
+          <strong>2670</strong> damages and on other conditions, it will only do as much as
+          <strong>6</strong> damages ? Let's see how it works.
+        </p>
+      </div>
+      <hr/>
+      <h1>Let's deal 2670 damages</h1>
+      <p>
+        <em class="text-muted">because obliterating our target is anyone's dream</em>
+      </p>
+      <h3>Effective Stat</h3>
+      <div class="row">
+        <p>
+          I didn't told you everything about stats. There is a formula for that too.
+          <em>
+            <strong>Beware, it can be scary.</strong>
+          </em>
+        </p>
+        <div class="col-lg-6">
+          <img src="https://cdn.bulbagarden.net/upload/8/80/HPStatCalcGen34.png" height="50px" />
+        </div>
+        <div class="col-lg-6">
+          <img src="https://cdn.bulbagarden.net/upload/c/c1/OtherStatCalcGen34.png" height="50px" />
+        </div>
+        <p>
+          Ok, that's not so scary. But you can see that there is more than just the base stat, let's get to them all.
+        </p>
+        <dl class="row">
+          <dt class="col-lg-2">Base</dt>
+          <dd class="col-lg-10 text-justify">
+            This is the value I showed you earlier. This value has the greatest influence on the effective stat. For Charizard, it's
+            107 but let's take 100 to make it simple.
+          </dd>
+
+          <dt class="col-lg-2">IV (
+            <em>Individual Value</em>)</dt>
+          <dd class="col-lg-10 text-justify">
+            The Individual Value is a number between 0 and 31 that is represented in each stat. The IV of each Pokémon - even of the
+            same species - can be different. It's like it's body characteristics. Some Charizards are faster than other since
+            their birth and the IV is there to represent those differences. Let's suppose our Charizard has 31 in Special
+            Attack.
+          </dd>
+
+          <dt class="col-lg-2">EV (
+            <em>Effort Value</em>)</dt>
+          <dd class="col-lg-10 text-justify">
+            Effort Value is another number, between 0 and 255 for each stat. Unlike IVs, EVs are at 0 when they are born. They represent
+            the training that a Pokémon can have for a particular stat. For every 4 EVs, a Pokémon level 100 has 1 more point
+            in the effective stat. They gain those EVs by defeating other Pokémons and the stat they affect depends on the
+            opponent. For instance, defeating a Charizard rewards 3 EVs in Special Attack. Let's suppose our Charizard has
+            maxed EVs in Special Attack, that's 63 more on the effective stat.
+          </dd>
+
+          <dt class="col-lg-2">Nature</dt>
+          <dd class="col-lg-10 text-justify">
+            The nature of a Pokémon also influences his stats. Usually, a nature increases slightly a stat and decreases another by 10%.
+            If we suppose our Charizard has a Rash nature, it makes him stronger in Special Attack.
+          </dd>
+
+          <dt class="col-lg-2">Stage 2 Special Attack</dt>
+          <dd class="col-lg-10 text-justify">
+            Some moves can effectively make a stat stronger when in battle. For each stage the stat go up (it can also go down), it modifies
+            the stat used for the damage calculation. In this case, we are using a stage 2 Special Attack that makes
+          </dd>
+
+        </dl>
+        <div class="col-lg-12">
+          <p>
+            With all that, Charizard now has an effective stat of
+            <strong>657.8</strong> Special Attack. That is much better.
+          </p>
+        </div>
+        <div class="col text-center">
+          <img class="img-responsive" src="https://media.giphy.com/media/Qglpf2QiuCKMU/giphy.gif" />
+          <p>
+            <em class="text-muted">But wait, there's more...</em>
+          </p>
+        </div>
+      </div>
+
+      <h3>Modifiers</h3>
+      <p>
+        <em class="text-muted">So many of them</em>
+      </p>
+      <div class="row">
+        There is a lot of things that can make our attack so much stronger. Let's get crazy on offense.
+      </div>
+      <dl class="row">
+        <dt class="col-lg-2">STAB and Type</dt>
+        <dd class="col-lg-10 text-justify">
+          We already talked about those, that makes our attack stronger by 1.5 and 2 respectively
+        </dd>
+
+        <dt class="col-lg-2">Harsh sun</dt>
+        <dd class="col-lg-10 text-justify">
+          Some moves can alter the weather and those can make attacks stronger. In this case, the move Sunny Day can make a harsh sun
+          weather, and that results in our move being 1.5 more effective.
+        </dd>
+
+        <dt class="col-lg-2">Helping Hand</dt>
+        <dd class="col-lg-10 text-justify">
+          Another move that can help is Helping Hand (pun not intended). This move can be used by a Pokémon that is next to our Charizard
+          (yes, battle with multiple Pokémons is a thing) and it allows his next attack to be 1.5 times more powerful. That's
+          the power of friendship !
+        </dd>
+
+        <dt class="col-lg-2">Blaze</dt>
+        <dd class="col-lg-10 text-justify">
+          Each Pokémon has a special talent called Abilities that can alter a bunch of things in the game. In this case, Blaze is a
+          simple ability that makes
+          <span class="type fire">fire</span> moves 1.5 times more effective if it's health is below one third. Let's assume our Charizard got hit
+          by his opponent, evil Mega-Venusaur and his health is currently below that point.
+        </dd>
+
+        <dt class="col-lg-2">Life Orb</dt>
+        <dd class="col-lg-10 text-justify">
+          In the Pokémon world, there is also a lot of items that can enhance our Pokémons' abilities if they hold them. Life Orb is
+          a simple item. The Pokémon takes 10% damages for each attack he makes but it's more effective by ~1.3 (5324/4096
+          exactly, Arceus knows why).
+        </dd>
+
+      </dl>
+      <div class="row">
+        <p class="col-lg-12">
+          With all that in mind, we are now all set to calculate the damage of the move with the damage formula :
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <img class="img-responsive" src="https://cdn.bulbagarden.net/upload/4/47/DamageCalc.png" />
+        </div>
+        <dl class="col-lg-6">
+          <dd class="col-lg-12">
+            <em>Level</em> is
+            <strong>100</strong>
+          </dd>
+          <dd class="col-lg-12">
+            <em>Power</em> is
+            <strong>90</strong>
+          </dd>
+          <dd class="col-lg-12">
+            <em>A</em> for attack (special attack in our case) is
+            <strong>657.8</strong>
+          </dd>
+          <dd class="col-lg-12">
+            <em>D</em> for special defense (Mega-Venusaur) is
+            <strong>245</strong> (120 * 2 + 5)</dd>
+          <dd class="col-lg-12">
+            <em>Modifier</em> is
+            <strong>1.5 * 2 * 1.5 * 1.5 * 1.5 * 5324/4096</strong>
+          </dd>
+        </dl>
+      </div>
+      <div class="row text-center">
+        <p class="col-lg-12">
+          With that, we come to a result of
+          <strong>2671</strong> damages, or more than 8 times Mega-Venusaur's HP!
+        </p>
+        <img class="img-responsive" src="https://media.giphy.com/media/is2AuX9kifYSk/giphy.gif" />
+      </div>
+      <hr/>
+      <h1>Let's deal 6 damages ?</h1>
+      <p>
+        <em class="text-muted">Bulky Mega-Venusaur does not agree to take a beating just yet</em>
+      </p>
+      <h3>You know how it works, let's do the reverse</h3>
+      <div class="row">
+        <p>
+          Instead of giving all we have in offense, let's see in the defensive side. We can greatly affect the outcome by giving everything
+          we got to Mega-Venusaur. Full EVs and IVs ? Let's go for it. A good nature and a stage 2 special defense ? It gets
+          that. An assault Vest giving him a 1.5 boost in defense ? Just bought it.
+        </p>
+        <p>
+          With all that, let's add the Thick Fat ability, a little rain instead of a harsh sun and a Light Screen (that's a move, not
+          a lotion). For each one of those modifiers, we divide the final damages by 2! STAB and types remain the same.
+        </p>
+      </div>
+
+      <div class="row text-center">
+        <p class="col-lg-12">
+          With that, we come to a result of
+          <strong>6</strong> damages. Mega-Venusaur will eventually be beaten after more than 50 attacks.
+        </p>
+        <div class="col-lg-3"></div>
+        <div class="col-lg-4">
+          <img src="https://media.giphy.com/media/6xMKFXFRJchK8/giphy.gif" />
+        </div>
+      </div>
+      <div class="row">
+        <p class="col-lg-12">
+          What is fun is that if we give both all that we have (let's make it Sunny to even things out) we get to 148 damages, that
+          just not enough to take it down in two attacks.
+        </p>
+      </div>
+
     </div>
   </section>
 
   <section id="d3">
-    <div class="col">
-      <svg id="d3Container" width="1800" height="600"></svg>
+    <div class="container wider">
+      <h1>Conclusion</h1>
+      <p>
+        <em class="text-muted">Aren't you amazed yet ?</em>
+      </p>
+      <p>
+        Just with this example, you can see that there is more depth in a Pokémon battle. We just scratched the surface of how deep and complex it can get.
+        For instance, we haven't talked about criticals or special moves. There is some status effects that can alter a Pokémon's stats and behaviour.
+        There is also an evasion/precision mechanic that alters if a move does it or not. And there is many abilities, moves or items that can alter all that.
+        And that's only if we are talking about battle!
+      </p>
+      <p>
+        And there is a lot of variety in the kind of Pokémons we can have. Stats differ greatly between each one of them. But it's also a world with creatures
+        that follow certain rules. Just look at the graph below. It shows the average value of each stat for each type of Pokémon. From that, you can recognize
+        some patterns. For instance, if you look at the <span class="type bug">Bug</span> type, you see that the average values are pretty low. That's beacause
+        many of the <span class="type bug">Bug</span> Pokémons are early game Pokémons that evolves quickly but are not as strong as others. That's the opposite with
+        <span class="type dragon">Dragon</span> Pokémons which can be found at the end game.
+      </p>
+      <p>
+        Other things you can gather. <span class="type flying">Flying</span> Pokémons are faster than the others types and <span class="type steel">Steel</span> Pokémons
+        have the highest Defense by far. <span class="type fighting">Fighting</span> Pokémons uses mainly contact and physical moves, so their Attack is very high compared
+        to their Special Attack that is very low. You can see that it's the opposite with <span class="type psychic">Psychic</span> Pokémons.
+      </p>
+      <p class="text-muted">
+        You can put your mouse over a stat to get it's value and hide other stats a little. You can also click on the legend on the right to completely hide every stat but one.
+        Click on another to change, or on the same one to get them all back.
+      </p>
+      <div class="col">
+        <svg id="d3Container" width="1600" height="600"></svg>
+      </div>
     </div>
   </section>
 
@@ -106,7 +523,7 @@
 
   <script src="https://d3js.org/d3.v4.js"></script>
   <script src="js/d3-tip.js"></script>
-  <script src="js/d3Custom.js"></script>
+  <script src="js/d3StatsPerType.js"></script>
 </body>
 
 </html>
