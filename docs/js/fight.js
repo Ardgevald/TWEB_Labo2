@@ -1,14 +1,48 @@
 let idAttacker = 1;
 let idDefenser = 1;
 
+$('#fighterAttack').attr('src', `./res/${idAttacker}.png`);
+$('#fighterDefense').attr('src', `./res/${idDefenser}.png`);
+
 let attacker;
 let defenser;
 
 let pokedex;
 let moves;
 
-//Optention des stats des 2 Pokémons
+function changeAttacker(id) {
+    pokedex.forEach((pokemon) => {
+        if (pokemon.id == id) {
+            attacker = pokemon;
+        }
+    });
 
+    $('#fighterAttack').attr('src', `./res/${id}.png`);
+
+    $('#attackSelector').html('');
+
+    moves.forEach((move) => {
+        if (move.pokemonID == id) {
+            //création de l'option de selection d'attaque associée
+            let optionText = move.identifier + " (type: " +
+                move.typeName + ", power: " + move.power + ")";
+            $('#attackSelector').append(`<option value="${move.id}">${optionText}</option>`);
+
+        }
+    });
+}
+
+function changeDefenser(id) {
+    pokedex.forEach((pokemon) => {
+        if (pokemon.id == id) {
+            defenser = pokemon;
+        }
+    });
+
+    $('#fighterDefense').attr('src', `./res/${id}.png`);
+}
+
+//Optention des stats des 2 Pokémons
 d3.csv('./csv/pokemon_complete.csv', (d, j, columns) => {
     return {
         id: +d.id,
@@ -36,13 +70,6 @@ d3.csv('./csv/pokemon_complete.csv', (d, j, columns) => {
             defenser = pokemon;
         }
     });
-
-    //Remplissage de la barre de vie des Pokémons
-    $('#healthAttacker').attr('max', attacker.hp);
-    $('#healthAttacker').attr('value', attacker.hp);
-
-    $('#healthDefenser').attr('max', defenser.hp);
-    $('#healthDefenser').attr('value', defenser.hp);
 
     //Génération des attaques disponibles pour l'attaquand
     d3.csv('./csv/moves.csv', (d, j, columns) => {
@@ -145,7 +172,7 @@ function attack() {
         }
 
         //this calculation is for a level 100 pokémon
-        let damageCaused = ((42 * chosenAttack.power * (attackStat / defenseStat)) / 50) + 2;
+        let damageCaused = (chosenAttack.power === 0 ? 0 : damageFactor / 100 * (((42 * chosenAttack.power * (attackStat / defenseStat)) / 50) + 2));
 
         $('#attackerAttackStat').html(attacker.identifier +
             " has " + attackText + " of " + attackStat);
@@ -155,15 +182,33 @@ function attack() {
 
         $('#damageDetail').html(attacker.identifier + " has caused " + damageCaused +
             " damages to " + defenser.identifier);
-        
+
         let hpAfterAttack = Math.max(defenser.hp - damageCaused, 0);
-        $('#healthDefenser').attr('style', `width:${hpAfterAttack/defenser.hp*100}%;`);
+        $('#healthDefenser').attr('style', `width:${hpAfterAttack / defenser.hp * 100}%;`);
 
         if (hpAfterAttack < (defenser.hp * 0.33)) {
             $('#healthDefenser').attr('class', 'progress-bar progress-bar-danger');
         } else if (hpAfterAttack < (defenser.hp * 0.5)) {
-            $('#healthDefenser').attr('class', 'progress-bar progress-bar-warning');            
+            $('#healthDefenser').attr('class', 'progress-bar progress-bar-warning');
+        } else {
+            $('#healthDefenser').attr('class', 'progress-bar progress-bar-success');
         }
     });
 }
+
+$('#pokemonPicker').affix({
+    offset: {
+        /* affix after top masthead */
+        top: () => {
+            this.top = $('#about').top() + $('#about').outerHeight(true);
+            return this.top;
+        },
+        /* un-affix when footer is reached */
+        bottom: () => {
+            this.bottom = $('#fight').top;
+            return this.bottom;
+        },
+    },
+});
+
 

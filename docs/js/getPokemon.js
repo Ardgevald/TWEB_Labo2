@@ -109,6 +109,7 @@ loadCSVToJson('./csv/pokemonType.csv', (err, pokedex) => {
         attackerImg.onerror = () => {
           this.src = `https://pokeapi.co/media/sprites/pokemon/${pokemon.id}.png`;
         };
+        changeAttacker(pokemon.id);
       };
       colAttack.appendChild(pokemonSelect);
       line.appendChild(colAttack);
@@ -127,6 +128,7 @@ loadCSVToJson('./csv/pokemonType.csv', (err, pokedex) => {
         defenserImg.onerror = () => {
           this.src = `https://pokeapi.co/media/sprites/pokemon/${pokemon.id}.png`;
         };
+        changeDefenser(pokemon.id);
       };
       colDefense.appendChild(pokemonSelect2);
       line.appendChild(colDefense);
@@ -142,22 +144,3 @@ loadCSVToJson('./csv/pokemonType.csv', (err, pokedex) => {
     });
   });
 });
-
-$('#pokemonPicker').affix({
-  offset: {
-    /* affix after top masthead */
-    top: () => {
-      this.top = $('#mainNav').height()
-        + $('#intro').height()
-        + $('#about').height();
-      return this.bottom;
-    },
-    /* un-affix when footer is reached */
-    bottom: () => {
-      this.bottom = $('fight').height()
-        + $('footer').height();
-      return this.bottom;
-    },
-  },
-});
-

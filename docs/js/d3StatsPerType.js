@@ -1,13 +1,12 @@
-var width = 960,
-height = 700,
-radius = Math.min(width, height) / 2,
-color = d3.scale.category20c();
 
-var svg = d3.select("#d3TypeProportions").append("svg")
-  .attr("width", width)
-  .attr("height", height)
-  .append("g")
-  .attr("transform", "translate(" + width / 2 + "," + height * .52 + ")");
+const svg = d3.select('#d3Container');
+const margin = {
+  top: 20, right: 20, bottom: 30, left: 40,
+};
+
+const width = +svg.attr('width') - margin.left - margin.right;
+const height = +svg.attr('height') - margin.top - margin.bottom;
+const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
 
 const x0 = d3.scaleBand()
   .rangeRound([0, width])
