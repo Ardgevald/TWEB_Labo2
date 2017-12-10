@@ -40,6 +40,7 @@ function changeDefenser(id) {
     });
 
     $('#fighterDefense').attr('src', `./res/${id}.png`);
+    $('#healthDefenser').html(defenser.hp);    
 }
 
 //Optention des stats des 2 Pokémons
@@ -68,6 +69,7 @@ d3.csv('./csv/pokemon_complete.csv', (d, j, columns) => {
 
         if (pokemon.id === idDefenser) {
             defenser = pokemon;
+            $('#healthDefenser').html(defenser.hp);  
         }
     });
 
@@ -145,10 +147,11 @@ function attack() {
                 break;
             case 100:
                 //nothing to show
+                $('#fightEfficiency').html("");
                 break;
             case 200:
             case 400:
-                $('#fightEfficiency').html("It's super effective!")
+                $('#fightEfficiency').html("It's super effective!");
                 break;
         }
 
@@ -172,7 +175,7 @@ function attack() {
         }
 
         //this calculation is for a level 100 pokémon
-        let damageCaused = (chosenAttack.power === 0 ? 0 : damageFactor / 100 * (((42 * chosenAttack.power * (attackStat / defenseStat)) / 50) + 2));
+        let damageCaused = Math.ceil(chosenAttack.power === 0 ? 0 : damageFactor / 100 * (((42 * chosenAttack.power * (attackStat / defenseStat)) / 50) + 2));
 
         $('#attackerAttackStat').html(attacker.identifier +
             " has " + attackText + " of " + attackStat);
@@ -184,7 +187,7 @@ function attack() {
             " damages to " + defenser.identifier);
 
         let hpAfterAttack = Math.max(defenser.hp - damageCaused, 0);
-        $('#healthDefenser').attr('style', `width:${hpAfterAttack / defenser.hp * 100}%;`);
+        $('#healthDefenser').attr('style', `width:${hpAfterAttack / defenser.hp * 100}%;`).html(hpAfterAttack);
 
         if (hpAfterAttack < (defenser.hp * 0.33)) {
             $('#healthDefenser').attr('class', 'progress-bar progress-bar-danger');
@@ -195,20 +198,3 @@ function attack() {
         }
     });
 }
-
-$('#pokemonPicker').affix({
-    offset: {
-        /* affix after top masthead */
-        top: () => {
-            this.top = $('#about').top() + $('#about').outerHeight(true);
-            return this.top;
-        },
-        /* un-affix when footer is reached */
-        bottom: () => {
-            this.bottom = $('#fight').top;
-            return this.bottom;
-        },
-    },
-});
-
-
