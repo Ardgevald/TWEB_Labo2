@@ -125,6 +125,7 @@ d3.csv('csv/stats_per_type.csv', (d, j, columns) => {
           .duration(duration)
           .attr('fill-opacity', 1);
       } else {
+
         active = d;
 
         d3.selectAll('.bar')
